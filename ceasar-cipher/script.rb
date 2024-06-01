@@ -5,14 +5,14 @@ def ceasar_cipher(string, shift)
       char_num += shift
       if(char_num > 90) 
         result << (64 + (char_num - 90)).chr
-      elsif
+      else
         result << char_num.chr
       end
     elsif (char_num > 96 && char_num < 123 )
       char_num += shift
       if(char_num > 122) 
         result << (96 + (char_num - 122)).chr
-      elsif
+      else
         result << char_num.chr
       end
     else
