@@ -2,19 +2,24 @@ stocks = [17,3,6,9,15,8,6,1,10]
 
 def stock_picker(days)
   best_day_to_buy = 0
-  best_day_to_sell = 1
-  max_profit = days[best_day_to_sell] - days[best_day_to_buy];
-  for i in 0...(days.length - 1)
-    for j in (i + 1)...(days.length)
-      profit = days[j] - days[i]
-      if(profit > max_profit)
-        max_profit = profit
-        best_day_to_buy = i
-        best_day_to_sell = j
-      end
+  min_price = days[0]
+  max_price = 0
+  result_days = [0, 0]  
+
+  days.each_with_index do |price, index|
+    if(price < min_price)
+      min_price = price
+      best_day_to_buy = index
+      next
+    end
+
+    if(price - min_price > max_price)
+      max_price = price - min_price
+      result_days = [best_day_to_buy, index]
     end
   end
-  return [best_day_to_buy, best_day_to_sell]
+
+  result_days
 end
 
 puts stock_picker(stocks)
