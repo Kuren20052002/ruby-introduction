@@ -1,5 +1,4 @@
 require_relative "node"
-
 # Linked list?
 class LinkedList
   attr_reader :head, :tail, :size
@@ -33,10 +32,19 @@ class LinkedList
     end
   end
 
+  def at(index)
+    temp = @head
+    while index != 0
+      temp = temp.next
+      index -= 1
+    end
+    temp
+  end
+
   def to_s
     temp = @head
     while temp
-      print "( #{temp.value} ) -> "
+      print "#{temp} -> "
       temp = temp.next
     end
     puts "nil"

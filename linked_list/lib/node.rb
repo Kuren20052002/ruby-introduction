@@ -7,4 +7,10 @@ class Node
     @value = value
     @next = nil
   end
+
+  def to_s
+    return "( #{value} )" if @value
+
+    "nah"
+  end
 end
