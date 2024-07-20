@@ -2,12 +2,16 @@ require_relative "node"
 
 # Linked list?
 class LinkedList
+  attr_reader :head, :tail, :size
+
   def initialize
     @head = nil
     @tail = nil
+    @size = 0
   end
 
   def append(value)
+    @size += 1
     if @head
       @tail.next = Node.new(value)
       @tail = @tail.next
@@ -18,6 +22,7 @@ class LinkedList
   end
 
   def prepend(value)
+    @size += 1
     if @head
       temp = Node.new(value)
       temp.next = @head

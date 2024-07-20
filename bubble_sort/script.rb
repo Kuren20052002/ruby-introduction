@@ -15,4 +15,8 @@ def bubble_sort(array)
   array
 end
 
-puts bubble_sort([2,3,41,43,52,1,2])
+
+array = Array.new(100000000) {rand(1..10000000)}
+start = Time.now
+bubble_sort(array)
+puts "Time it took to sort the array of #{array.length} number is #{Time.now - start}"
