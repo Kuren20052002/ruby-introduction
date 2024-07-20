@@ -51,6 +51,7 @@ class LinkedList
   end
 
   def pop
+    @size -= 1
     if @head == @tail && @head
       @head = nil
       @tail = nil
@@ -90,18 +91,25 @@ class LinkedList
     @size += 1
     return append(value) unless @head
 
-    temp = @head
-    while index != 1
-      index -= 1
-      temp = temp.next
-    end
-    # insert at next point
+    temp = at(index)
     new_node = Node.new(value)
     new_node.prev = temp
     new_node.next = temp.next
     temp.next.prev = new_node
     temp.next = new_node
     new_node
+  end
+
+  def remove_at(index)
+    unless @head
+      puts 'There is no Node to remove!'
+      return nil
+    end
+    return pop if @head == @tail || (temp = at(index)) == @tail
+
+    @size -= 1
+    temp.prev.next = temp.next
+    temp.next.prev = temp.prev
   end
 
   def to_s
