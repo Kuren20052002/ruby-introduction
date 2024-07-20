@@ -62,6 +62,16 @@ class LinkedList
     end
   end
 
+  def contain?(value)
+    temp = @head
+    while temp
+      return true if temp.value == value
+
+      temp = temp.next
+    end
+    false
+  end
+
   def to_s
     temp = @head
     while temp
