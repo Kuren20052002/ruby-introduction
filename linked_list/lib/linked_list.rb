@@ -16,4 +16,13 @@ class LinkedList
       @tail = @head
     end
   end
+
+  def to_s
+    temp = @head
+    while temp
+      print "( #{temp.value} ) -> "
+      temp = temp.next
+    end
+    puts "nil"
+  end
 end
