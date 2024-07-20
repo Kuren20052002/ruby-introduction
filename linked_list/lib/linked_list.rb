@@ -1,4 +1,5 @@
-require_relative "node"
+require_relative 'node'
+require 'pry-byebug'
 # Linked list?
 class LinkedList
   attr_reader :head, :tail, :size
@@ -19,8 +20,6 @@ class LinkedList
     else
       @head = Node.new(value)
       @tail = @head
-      @tail.prev = @head
-      @head.next = @tail
     end
   end
 
@@ -34,15 +33,13 @@ class LinkedList
     else
       @head = Node.new(value)
       @tail = @head
-      @tail.prev = @head
-      @head.next = @tail
     end
   end
 
   def at(index)
     return nil if @size.zero?
 
-    middle = (@size / 2) - 1
+    middle = (@size / 2)
     if index > middle
       temp = @tail
       (@size - index - 1).times { temp = temp.prev }
@@ -53,12 +50,24 @@ class LinkedList
     temp
   end
 
+  def pop
+    if @head == @tail && @head
+      @head = nil
+      @tail = nil
+    elsif @head != @tail
+      @tail = @tail.prev
+      @tail.next = nil
+    else
+      puts 'There is no node to pop!'
+    end
+  end
+
   def to_s
     temp = @head
     while temp
       print "#{temp} -> "
       temp = temp.next
     end
-    puts "nil"
+    puts 'nil'
   end
 end

@@ -12,6 +12,6 @@ class Node
   def to_s
     return "( #{value} )" if @value
 
-    "nah"
+    'nah'
   end
 end
