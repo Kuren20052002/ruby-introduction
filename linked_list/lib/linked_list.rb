@@ -12,11 +12,15 @@ class LinkedList
   def append(value)
     @size += 1
     if @head
-      @tail.next = Node.new(value)
-      @tail = @tail.next
+      temp = Node.new(value)
+      temp.prev = @tail
+      @tail.next = temp
+      @tail = temp
     else
       @head = Node.new(value)
       @tail = @head
+      @tail.prev = @head
+      @head.next = @tail
     end
   end
 
@@ -25,18 +29,26 @@ class LinkedList
     if @head
       temp = Node.new(value)
       temp.next = @head
+      @head.prev = temp
       @head = temp
     else
       @head = Node.new(value)
       @tail = @head
+      @tail.prev = @head
+      @head.next = @tail
     end
   end
 
   def at(index)
-    temp = @head
-    while index != 0
-      temp = temp.next
-      index -= 1
+    return nil if @size.zero?
+
+    middle = (@size / 2) - 1
+    if index > middle
+      temp = @tail
+      (@size - index - 1).times { temp = temp.prev }
+    else
+      temp = @head
+      index.times { temp = temp.next }
     end
     temp
   end
