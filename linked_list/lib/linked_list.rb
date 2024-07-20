@@ -72,6 +72,38 @@ class LinkedList
     false
   end
 
+  def find(value)
+    index = 0
+    if @head
+      temp = @head
+      while temp
+        return index if temp.value == value
+
+        temp = temp.next
+        value += 1
+      end
+    end
+    nil
+  end
+
+  def insert_at(index, value)
+    @size += 1
+    return append(value) unless @head
+
+    temp = @head
+    while index != 1
+      index -= 1
+      temp = temp.next
+    end
+    # insert at next point
+    new_node = Node.new(value)
+    new_node.prev = temp
+    new_node.next = temp.next
+    temp.next.prev = new_node
+    temp.next = new_node
+    new_node
+  end
+
   def to_s
     temp = @head
     while temp
