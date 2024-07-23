@@ -9,10 +9,11 @@ class HashMap
 
   def hash(key)
     key = key.to_s
+    key = key[1..key.length] + key[0]
     hash_code = 0
-    pn = 179
-    key.each_byte { |char_num| hash_code = (hash_code * pn) + char_num }
-
+    pn1 = 179
+    pn2 = 103
+    key.each_byte { |char_num| hash_code = (hash_code * pn1 % pn2) + (char_num * pn2 % pn1) }
     hash_code % @size
   end
 end
