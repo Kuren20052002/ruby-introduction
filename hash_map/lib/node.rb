@@ -14,6 +14,10 @@ class Node
     @value = value
   end
 
+  def pair
+    [@key, @value]
+  end
+
   def to_s
     return "( #{key} #{value} )" if @value
 

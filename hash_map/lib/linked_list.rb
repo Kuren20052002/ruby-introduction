@@ -1,4 +1,4 @@
-require_relative 'node'
+require_relative "node"
 # Linked list?
 class LinkedList
   attr_reader :head, :tail, :size
@@ -30,9 +30,8 @@ class LinkedList
     elsif @head != @tail
       @tail = @tail.prev
       @tail.next = nil
-    else
-      puts 'There is no node to pop!'
     end
+    nil
   end
 
   def contain?(key)
@@ -45,11 +44,11 @@ class LinkedList
     false
   end
 
-  def find(value)
+  def find(key)
     if @head
       temp = @head
       while temp
-        return temp if temp.value == value
+        return temp if temp.key == key
 
         temp = temp.next
       end
@@ -72,6 +71,6 @@ class LinkedList
       print "#{temp} -> "
       temp = temp.next
     end
-    puts 'nil'
+    puts "nil"
   end
 end
