@@ -1,10 +1,10 @@
-require_relative "linked_list"
+require_relative 'linked_list'
 
 class HashMap
   def initialize
     @size = 16
     @load_factor = 0.8
-    @buckets = LinkedList.new
+    @buckets = Array.new(@size) { LinkedList.new }
   end
 
   def hash(key)
