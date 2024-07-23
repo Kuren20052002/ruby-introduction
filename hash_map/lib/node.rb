@@ -19,7 +19,7 @@ class Node
   end
 
   def to_s
-    return "( #{key} #{value} )" if @value
+    return "( #{key}: #{value} )" if @value
 
     "nah"
   end

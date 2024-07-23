@@ -9,6 +9,12 @@ class LinkedList
     @size = 0
   end
 
+  def empty?
+    return true if @head.nil? && @tail.nil?
+
+    false
+  end
+
   def append(key, value)
     @size += 1
     if @head
@@ -72,5 +78,6 @@ class LinkedList
       temp = temp.next
     end
     puts "nil"
+    nil
   end
 end
