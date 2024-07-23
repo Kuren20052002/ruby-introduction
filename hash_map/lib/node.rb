@@ -10,9 +10,13 @@ class Node
     @prev = nil
   end
 
+  def update(value)
+    @value = value
+  end
+
   def to_s
     return "( #{key} #{value} )" if @value
 
-    'nah'
+    "nah"
   end
 end

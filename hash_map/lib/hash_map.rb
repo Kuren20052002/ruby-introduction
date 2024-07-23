@@ -1,4 +1,4 @@
-require_relative 'linked_list'
+require_relative "linked_list"
 
 class HashMap
   def initialize
@@ -15,5 +15,14 @@ class HashMap
     pn2 = 103
     key.each_byte { |char_num| hash_code = (hash_code * pn1 % pn2) + (char_num * pn2 % pn1) }
     hash_code % @size
+  end
+
+  def set(key, value)
+    hash_code = hash(key)
+    temp = @buckets[hash_code].find(key)
+
+    return @buckets[hash_code].append(key, value) unless temp
+
+    temp.update(value)
   end
 end
