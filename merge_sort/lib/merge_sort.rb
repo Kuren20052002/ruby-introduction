@@ -31,8 +31,3 @@ def merge(left_array, right_array)
   end
   result
 end
-
-array = Array.new(100000000) {rand(1..100)}
-start = Time.nows
-merge_sort(array, 0 , array.length)
-puts "Time it took to sort the array of #{array.length} number is #{Time.now - start}"
