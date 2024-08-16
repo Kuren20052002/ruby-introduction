@@ -23,7 +23,7 @@ describe "Ceasar encrypting method:" do
     it "shift is negative" do
       text = "alSdf"
       result = ceasar_cipher(text, -2)
-      expect(result).to eq("ufMxz")
+      expect(result).to eq("yjQbd")
     end
 
     it "shift is smaller than -26" do
